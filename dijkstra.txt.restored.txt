@@ -1,0 +1,29 @@
+DIJKSTRA(G, Source):
+
+    for each vertex v in G:
+        distance[v] = INFINITY
+        visited[v] = FALSE
+        parent[v] = NULL
+
+    distance[Source] = 0
+
+    repeat |V| times:
+
+        u = unvisited vertex with minimum distance[u]
+
+        if distance[u] == INFINITY:
+            BREAK
+
+        visited[u] = TRUE
+
+        for each neighbour v of u:
+
+            if visited[v] == FALSE:
+
+                newDistance = distance[u] + weight(u, v)
+
+                if newDistance < distance[v]:
+                    distance[v] = newDistance
+                    parent[v] = u
+
+    return distance, parent
